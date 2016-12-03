@@ -1,16 +1,32 @@
-package kr.ac.hansung.dao;
+package kr.ac.hansung.model;
+
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Range;
 
 public class Subject {
 
 	private int year;
 	private int semester;
+	@NotEmpty(message="필수 항목")
 	private String code;
+	@NotEmpty(message="필수 항목")
 	private String name;
 	private String kind;
+	@NotNull
+	@Range(min=1, max=3, message="1학점 이상 3학점 이하")
 	private int point;
 	
 	
 	public Subject() {
+	}
+
+	public Subject(int year, int semester, int point) {
+		super();
+		this.year = year;
+		this.semester = semester;
+		this.point = point;
 	}
 
 	public Subject(int year, int semester, String code, String name, String kind, int point) {

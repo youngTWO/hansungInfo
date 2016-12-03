@@ -6,29 +6,28 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/resources/css/main.css">
-<title>학기별 이수 과목</title>
+<title>수강신청 조회</title>
 </head>
 <body>
-	<h3>학기별 이수 과목</h3>
+	<h3>2017-1 수강신청 조회</h3>
 	<hr>
+
 	<table class="formtable">
-		<tr>
-			<th>년도</th>
+		<tr class="label">
+			<th>수강년도</th>
 			<th>학기</th>
-			<th>이수 학점</th>
-			<th>상세보기</th>
+			<th>교과코드</th>
+			<th>교과목명</th>
+			<th>학점</th>
 		</tr>
 
-		<c:forEach var="semesterList" items="${semesterList}">
+		<c:forEach var="detail" items="${detail}">
 			<tr>
-				<td><c:out value="${semesterList.year}"></c:out></td>
-				<td><c:out value="${semesterList.semester}"></c:out></td>
-				<td><c:out value="${semesterList.point}"></c:out></td>
-				<td>
-					<a href="${pageContext.request.contextPath}/semesterDetail?year=${semesterList.year}&semester=${semesterList.semester}">
-						링크
-					</a>
-				</td>
+				<td class="contents"><c:out value="${detail.year}"></c:out></td>
+				<td class="contents"><c:out value="${detail.semester}"></c:out></td>
+				<td class="contents"><c:out value="${detail.code}"></c:out></td>
+				<td class="alignleft"><c:out value="${detail.name}"></c:out></td>
+				<td class="contents"><c:out value="${detail.point}"></c:out></td>
 			</tr>
 		</c:forEach>
 	</table>
